@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import { ImSun } from "react-icons/im";
 
 const DarkMode = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,20 +48,20 @@ const DarkMode = () => {
   return (
     <div className="relative">
       <button onClick={() => setIsOpen(!isOpen)} className="relative z-50">
-        <span className="dark:hidden">
+        <span className="flex gap-x-1 dark:hidden">
           <svg
             viewBox="0 0 24 24"
             fill="none"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-6 h-6"
+            className="h-6 w-6"
           >
             <path
               d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
               className={`${
                 activeTheme === "light"
-                  ? "stroke-sky-500 fill-sky-400/20"
+                  ? "fill-sky-400/20 stroke-sky-500"
                   : "stroke-slate-400 dark:stroke-slate-500"
               }`}
             ></path>
@@ -68,14 +69,21 @@ const DarkMode = () => {
               d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836"
               className={`${
                 activeTheme === "light"
-                  ? "stroke-sky-500 fill-sky-400/20"
+                  ? "fill-sky-400/20 stroke-sky-500"
                   : "stroke-slate-400 dark:stroke-slate-500"
               }`}
             ></path>
           </svg>
+          {/* <ImSun
+            className={`${
+              activeTheme === "light"
+                ? "fill-sky-500"
+                : "fill-slate-400 dark:fill-slate-500"
+            } text-xl`}
+          /> */}
         </span>
         <span className="hidden dark:inline">
-          <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+          <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -110,16 +118,16 @@ const DarkMode = () => {
       <ul
         className={`${
           isOpen ? "block" : "hidden"
-        } absolute z-50 top-full right-0 bg-white rounded-lg ring-1 ring-slate-900/10 shadow-lg overflow-hidden w-36 py-1 text-sm text-slate-700 font-semibold dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:text-slate-300 mt-8`}
+        } dark:highlight-white/5 absolute top-full right-0 z-50 mt-8 w-36 overflow-hidden rounded-lg bg-white py-1 text-sm font-semibold text-slate-700 shadow-lg ring-1 ring-slate-900/10 dark:bg-slate-800 dark:text-slate-300 dark:ring-0`}
       >
         <li
           onClick={selectThemeHandler}
           data-theme="light"
           className={`${
             activeTheme === "light"
-              ? "bg-slate-100 dark:bg-slate-600/30 text-sky-500"
+              ? "bg-slate-100 text-sky-500 dark:bg-slate-600/30"
               : ""
-          } py-1 px-2 flex items-center cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-600/30`}
+          } flex cursor-pointer items-center py-1 px-2 hover:bg-slate-100 dark:hover:bg-slate-600/30`}
         >
           <svg
             viewBox="0 0 24 24"
@@ -127,13 +135,13 @@ const DarkMode = () => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-6 h-6 mr-2"
+            className="mr-2 h-6 w-6"
           >
             <path
               d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
               className={`${
                 activeTheme === "light"
-                  ? "stroke-sky-500 fill-sky-400/20"
+                  ? "fill-sky-400/20 stroke-sky-500"
                   : "stroke-slate-400 dark:stroke-slate-500"
               }`}
             ></path>
@@ -141,7 +149,7 @@ const DarkMode = () => {
               d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836"
               className={`${
                 activeTheme === "light"
-                  ? "stroke-sky-500 fill-sky-400/20"
+                  ? "fill-sky-400/20 stroke-sky-500"
                   : "stroke-slate-400 dark:stroke-slate-500"
               }`}
             ></path>
@@ -153,11 +161,11 @@ const DarkMode = () => {
           data-theme="dark"
           className={`${
             activeTheme === "dark"
-              ? "bg-slate-100 dark:bg-slate-600/30 text-sky-500"
+              ? "bg-slate-100 text-sky-500 dark:bg-slate-600/30"
               : ""
-          } py-1 px-2 flex items-center cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-600/30`}
+          } flex cursor-pointer items-center py-1 px-2 hover:bg-slate-100 dark:hover:bg-slate-600/30`}
         >
-          <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 mr-2">
+          <svg viewBox="0 0 24 24" fill="none" className="mr-2 h-6 w-6">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -190,18 +198,18 @@ const DarkMode = () => {
           data-theme="system"
           className={`${
             activeTheme === "system"
-              ? "bg-slate-100 dark:bg-slate-600/30 text-sky-500"
+              ? "bg-slate-100 text-sky-500 dark:bg-slate-600/30"
               : ""
-          } py-1 px-2 flex items-center cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-600/30`}
+          } flex cursor-pointer items-center py-1 px-2 hover:bg-slate-100 dark:hover:bg-slate-600/30`}
         >
-          <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 mr-2">
+          <svg viewBox="0 0 24 24" fill="none" className="mr-2 h-6 w-6">
             <path
               d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z"
               strokeWidth="2"
               strokeLinejoin="round"
               className={`${
                 activeTheme === "system"
-                  ? "stroke-sky-500 fill-sky-400/20"
+                  ? "fill-sky-400/20 stroke-sky-500"
                   : "stroke-slate-400 dark:stroke-slate-500"
               }`}
             ></path>
@@ -212,7 +220,7 @@ const DarkMode = () => {
               strokeLinejoin="round"
               className={`${
                 activeTheme === "system"
-                  ? "stroke-sky-500 fill-sky-400/20"
+                  ? "fill-sky-400/20 stroke-sky-500"
                   : "stroke-slate-400 dark:stroke-slate-500"
               }`}
             ></path>

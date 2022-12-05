@@ -3,7 +3,15 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      padding: {
+        "4/5": "80%",
+        "1/5": "20%",
+      },
+      gridTemplateColumns: {
+        autofit: "repeat(auto-fit, minmax(260px, 1fr))",
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };

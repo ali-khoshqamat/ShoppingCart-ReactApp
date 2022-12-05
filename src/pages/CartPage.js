@@ -1,6 +1,6 @@
 const CartPage = () => {
   return (
-    <main>
+    <main className="text-center">
       <h2>Cart Page!</h2>
     </main>
   );
