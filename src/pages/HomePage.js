@@ -1,18 +1,25 @@
 import { products } from "../data";
+import { useCartActions } from "../Providers/CartProvider";
 
 const HomePage = () => {
+  const dispatch = useCartActions();
+
+  const addProductHandler = (product) => {
+    dispatch({ type: "ADD_TO_CART", payload: product });
+  };
+
   return (
     <main className="px-2.5">
       {/* <h2 className="p-2.5">Home Page!</h2> */}
       <section className="container mx-auto space-y-5 xl:max-w-screen-xl ">
         <h3 className="text-center font-bold">Products List</h3>
-        <ul className="grid grid-cols-autofit gap-x-3 gap-y-5">
+        <ul className="grid grid-cols-autofit gap-x-[3rem] gap-y-[3.5rem]">
           {products.map((product) => (
             <li
               key={product.id}
-              className="rounded-2xl bg-slate-900 text-sm text-white dark:bg-white dark:text-slate-900"
+              className="flex flex-col items-center rounded-2xl bg-slate-100 pb-2.5 text-sm text-slate-800 shadow dark:bg-slate-800 dark:text-white"
             >
-              <div className="aspect-w-5 aspect-h-4">
+              <div className="aspect-w-5 aspect-h-4 w-full">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -26,10 +33,16 @@ const HomePage = () => {
                   />
                 </div> */}
               </div>
-              <div className="flex justify-between p-2.5">
+              <div className="flex w-full justify-between p-2.5">
                 <p>{product.name}</p>
                 <p>$ {product.price}</p>
               </div>
+              <button
+                onClick={() => addProductHandler(product)}
+                className="rounded-lg border border-slate-300 bg-slate-200 px-3 py-1.5 text-center text-slate-800 shadow-sm hover:border-sky-500 hover:!text-sky-500  dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200 dark:hover:border-sky-500 "
+              >
+                Add to Cart
+              </button>
             </li>
           ))}
         </ul>

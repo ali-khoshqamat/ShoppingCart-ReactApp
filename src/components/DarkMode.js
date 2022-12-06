@@ -48,7 +48,7 @@ const DarkMode = () => {
   return (
     <div className="relative">
       <button onClick={() => setIsOpen(!isOpen)} className="relative z-50">
-        <span className="flex gap-x-1 dark:hidden">
+        <span className="dark:hidden">
           <svg
             viewBox="0 0 24 24"
             fill="none"
