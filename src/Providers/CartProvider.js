@@ -13,19 +13,34 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "ADD_TO_CART":
-      const index = state.cart.findIndex((itm) => itm.id === action.payload.id);
+    case "ADD_TO_CART": {
+      const index = state.cart.findIndex((p) => p.id === action.payload.id);
       const product = { ...state.cart[index] };
-      product.quantity++;
       const products = [...state.cart];
+      product.quantity++;
       products[index] = product;
-      
+
       return index < 0
         ? {
-            ...state,
+            total: state.total + 1,
             cart: [...state.cart, { ...action.payload, quantity: 1 }],
           }
-        : { ...state, cart: products };
+        : { total: state.total + 1, cart: products };
+    }
+    case "REMOVE_FROM_CART": {
+      const index = state.cart.findIndex((p) => p.id === action.payload.id);
+      const product = { ...state.cart[index] };
+      const products = [...state.cart];
+      product.quantity--;
+      products[index] = product;
+
+      return product.quantity < 1
+        ? {
+            total: state.total - 1,
+            cart: state.cart.filter((p) => p.id !== action.payload.id),
+          }
+        : { total: state.total - 1, cart: products };
+    }
     default:
       return state;
   }

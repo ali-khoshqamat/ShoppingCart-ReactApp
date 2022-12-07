@@ -1,9 +1,17 @@
+import { useCartActions } from "../Providers/CartProvider";
+import { FaTrash } from "react-icons/fa";
+
 const Cart = ({ product }) => {
+  const dispatch = useCartActions();
+
+  const incrementHandler = (product) => {
+    dispatch({ type: "ADD_TO_CART", payload: product });
+  };
+  const decrementHandler = (product) => {
+    dispatch({ type: "REMOVE_FROM_CART", payload: product });
+  };
   return (
-    <div
-      key={product.id}
-      className="flex max-h-80 rounded-2xl border bg-slate-100 shadow dark:border-none dark:bg-slate-800"
-    >
+    <div className="flex max-h-80 rounded-2xl border bg-slate-100 shadow dark:border-none dark:bg-slate-800">
       <div className="aspect-w-12 aspect-h-[3.2] basis-4/12">
         <img
           src={product.image}
@@ -27,11 +35,21 @@ const Cart = ({ product }) => {
             $ {product.price * product.quantity}
           </h2>
           <div className="flex items-center gap-x-4">
-            <button className="rounded-md border border-slate-300 bg-slate-200 py-1 px-3 text-center font-bold shadow-sm hover:border-red-600 hover:!text-red-600 dark:border-slate-600 dark:bg-slate-700 dark:hover:border-red-600">
-              Remove
+            <button
+              onClick={() => decrementHandler(product)}
+              className="rounded-md border border-slate-300 bg-slate-200 py-1 px-3 text-center font-bold shadow-sm hover:border-red-600 hover:!text-red-600 dark:border-slate-600 dark:bg-slate-700 dark:hover:border-red-600"
+            >
+              {product.quantity === 1 ? (
+                <FaTrash className="my-1 mx-3 text-red-600" />
+              ) : (
+                "Remove"
+              )}
             </button>
             <p className="text-lg font-bold">{product.quantity}</p>
-            <button className="rounded-md border border-sky-500 bg-sky-500 py-1 px-3.5 font-bold text-slate-100 shadow-sm hover:ring-2 hover:ring-sky-500 hover:ring-offset-1 dark:border-sky-600 dark:bg-sky-600 dark:ring-offset-slate-800 dark:hover:ring-sky-600">
+            <button
+              onClick={() => incrementHandler(product)}
+              className="rounded-md border border-sky-500 bg-sky-500 py-1 px-3.5 font-bold text-slate-100 shadow-sm hover:ring-2 hover:ring-sky-500 hover:ring-offset-1 dark:border-sky-600 dark:bg-sky-600 dark:ring-offset-slate-800 dark:hover:ring-sky-600"
+            >
               Add
             </button>
           </div>
