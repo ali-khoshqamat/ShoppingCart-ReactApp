@@ -8,7 +8,7 @@ const items = [
 
 const Navigation = () => {
   return (
-    <nav className="flex items-center justify-between border-b bg-slate-100 py-4 px-8 font-bold shadow dark:border-slate-800 dark:bg-slate-900 dark:text-white">
+    <nav className="flex items-center justify-between border-b bg-slate-100 py-4 px-8 font-bold shadow dark:border-slate-800 dark:bg-slate-900">
       <ul className="flex items-center gap-x-3.5">
         {items.map((item) => (
           <li key={item.to}>

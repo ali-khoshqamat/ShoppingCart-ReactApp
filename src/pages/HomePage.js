@@ -17,7 +17,7 @@ const HomePage = () => {
           {products.map((product) => (
             <li
               key={product.id}
-              className="flex flex-col items-center rounded-2xl bg-slate-100 pb-2.5 text-sm text-slate-800 shadow dark:bg-slate-800 dark:text-white"
+              className="flex flex-col items-center rounded-2xl bg-slate-100 pb-2.5 text-sm shadow dark:bg-slate-800"
             >
               <div className="aspect-w-5 aspect-h-4 w-full">
                 <img
@@ -34,12 +34,12 @@ const HomePage = () => {
                 </div> */}
               </div>
               <div className="flex w-full justify-between p-2.5">
-                <p>{product.name}</p>
-                <p>$ {product.price}</p>
+                <p className="font-bold">{product.name}</p>
+                <p className="font-bold">${product.price}</p>
               </div>
               <button
                 onClick={() => addProductHandler(product)}
-                className="rounded-lg border border-slate-300 bg-slate-200 px-3 py-1.5 text-center text-slate-800 shadow-sm hover:border-sky-500 hover:!text-sky-500  dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200 dark:hover:border-sky-500 "
+                className="rounded-md border border-slate-300 bg-slate-200 py-1 px-3 text-center font-bold shadow-sm hover:border-sky-500 hover:!text-sky-500 dark:border-slate-600 dark:bg-slate-700 dark:hover:border-sky-500"
               >
                 Add to Cart
               </button>
