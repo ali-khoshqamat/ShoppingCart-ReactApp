@@ -1,15 +1,21 @@
 import { useCartActions } from "../Providers/CartProvider";
 import { FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
-const Cart = ({ product }) => {
+const Order = ({ product }) => {
   const dispatch = useCartActions();
 
   const incrementHandler = (product) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
+    toast.success(`${product.name} Added :)`);
   };
   const decrementHandler = (product) => {
     dispatch({ type: "REMOVE_FROM_CART", payload: product });
+    product.quantity > 1
+      ? toast.error(`${product.name} was Removed!`)
+      : toast.error(`${product.name} was Deleted!`);
   };
+
   return (
     <div className="flex max-h-80 rounded-2xl border bg-slate-100 shadow dark:border-none dark:bg-slate-800">
       <div className="aspect-w-12 aspect-h-[3.2] basis-4/12">
@@ -31,9 +37,14 @@ const Cart = ({ product }) => {
         </div>
 
         <div className="flex h-full flex-col justify-between gap-y-2">
-          <h2 className="self-end text-lg font-bold">
-            $ {product.price * product.quantity}
-          </h2>
+          <div className="self-end">
+            <h2 className="text-lg font-bold text-slate-400 line-through dark:text-slate-500">
+              $ {product.price * product.quantity}
+            </h2>
+            <h2 className="text-lg font-bold">
+              $ {product.offPrice * product.quantity}
+            </h2>
+          </div>
           <div className="flex items-center gap-x-4">
             <button
               onClick={() => decrementHandler(product)}
@@ -59,4 +70,4 @@ const Cart = ({ product }) => {
   );
 };
 
-export default Cart;
+export default Order;
