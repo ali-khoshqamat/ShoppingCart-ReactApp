@@ -33,7 +33,19 @@ const Navigation = () => {
           </li>
         ))}
       </ul>
-      <DarkMode />
+      <div className="flex items-center justify-between gap-x-4">
+        <NavLink
+          to="/login"
+          className={({ isActive }) =>
+            isActive
+              ? "border-b-2 !border-sky-500 py-4 px-0.5 text-sky-500"
+              : "py-4 px-0.5 hover:text-sky-500/90"
+          }
+        >
+          <button>login/singup</button>
+        </NavLink>
+        <DarkMode />
+      </div>
     </nav>
   );
 };

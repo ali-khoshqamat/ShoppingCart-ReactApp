@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useCart, useCartActions } from "../Providers/CartProvider";
 import { checkInCart } from "../utils/checkInCart";
@@ -39,18 +39,24 @@ const Product = ({ product }) => {
           <p className="font-bold">${product.offPrice}</p>
         </div>
       </div>
-      <button
-        onClick={() => addProductHandler(product)}
-        className="rounded-md border border-slate-300 bg-slate-200 py-1 px-3 text-center font-bold shadow-sm hover:border-sky-500 hover:!text-sky-500 dark:border-slate-600 dark:bg-slate-700 dark:hover:border-sky-500"
-      >
-        {checkInCart(cart, product) ? (
-          <NavLink to="" className="text-sky-500">
+
+      {checkInCart(cart, product) ? (
+        <Link to="/checkout" className="text-sky-500">
+          <button
+            onClick={() => addProductHandler(product)}
+            className="rounded-md border border-slate-300 bg-slate-200 py-1 px-3 text-center font-bold shadow-sm hover:border-sky-500 hover:!text-sky-500 dark:border-slate-600 dark:bg-slate-700 dark:hover:border-sky-500"
+          >
             Continue Order
-          </NavLink>
-        ) : (
-          "Add to Cart"
-        )}
-      </button>
+          </button>
+        </Link>
+      ) : (
+        <button
+          onClick={() => addProductHandler(product)}
+          className="rounded-md border border-slate-300 bg-slate-200 py-1 px-3 text-center font-bold shadow-sm hover:border-sky-500 hover:!text-sky-500 dark:border-slate-600 dark:bg-slate-700 dark:hover:border-sky-500"
+        >
+          Add to Cart
+        </button>
+      )}
     </li>
   );
 };

@@ -1,0 +1,54 @@
+
+POST http://localhost:3001/users HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Ali Khoshqamat 007",
+    "email": "ali_khoshghamat@yahoo.com",
+    "phoneNumber": "09120000000",
+    "password": "P123456pp!",
+    "passwordConfirmation": "P123456pp!",
+    "gender": "0",
+    "nationality": "US",
+    "intrests": [
+    "react.js",
+    "vue.js"
+    ],
+    "terms": true
+}
+
+###
+
+POST http://nodejs-post-app.herokuapp.com/api/users/login HTTP/1.1
+# content-type: application/json
+Content-Type: charset=UTF-8
+
+{
+    "email": "wahedm@gmail9.com",
+    "password": "1234579444"
+}
+
+###
+POST http://nodejs-post-app.herokuapp.com/api/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "email": "wahedm@gmail9.com",
+    "password": "1234579444",
+    "name":"wahed m",
+    "phoneNumber":"09182471500"
+}
+
+
+###
+GET https://nodejs-post-app.herokuapp.com/api/users HTTP/1.1
+content-type: application/json
+
+###
+
+
+###
+GET http://nodejs-post-app.herokuapp.com/api/product/seed HTTP/1.1
+content-type: application/json
+
+###

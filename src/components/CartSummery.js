@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../Providers/CartProvider";
 
 const CartSummery = () => {
@@ -50,9 +51,11 @@ const CartSummery = () => {
           </div>
         </div>
       </div>
-      <button className="rounded-md border border-slate-300 bg-slate-200 py-1.5 px-3 text-center font-bold text-sky-500 shadow-sm hover:border-sky-500 dark:border-slate-600 dark:bg-slate-700 dark:hover:border-sky-500">
-        Continue Order
-      </button>
+      <Link to="/checkout">
+        <button className="w-full rounded-md border border-slate-300 bg-slate-200 py-1.5 px-3 text-center font-bold text-sky-500 shadow-sm hover:border-sky-500 dark:border-slate-600 dark:bg-slate-700 dark:hover:border-sky-500">
+          Continue Order
+        </button>
+      </Link>
     </div>
   );
 };
