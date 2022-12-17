@@ -13,7 +13,7 @@ import { useAuthActions } from "../Providers/AuthProvider";
 import { useQuery } from "../Hooks/useQuery";
 
 const SingupForm = () => {
-  const redirect = useQuery().get("redirect") || "/";
+  const redirect = useQuery().get("redirect") || "";
   const setAuth = useAuthActions();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
