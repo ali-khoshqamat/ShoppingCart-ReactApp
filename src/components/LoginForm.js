@@ -5,14 +5,17 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../services/CRUDUserService";
+import { useAuthActions } from "../Providers/AuthProvider";
 
 const LoginForm = () => {
+  const setAuth = useAuthActions();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const onSubmit = (values) => {
     loginUser(values)
       .then(({ data }) => {
         console.log(data);
+        setAuth(data);
         setError(null);
         navigate("/");
       })

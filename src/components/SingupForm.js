@@ -9,8 +9,10 @@ import CheckBoxInput from "../common/CheckBoxInput";
 import BooleanCheckBoxInput from "../common/BooleanCheckBoxInput";
 import { Link, useNavigate } from "react-router-dom";
 import { signupUser } from "../services/CRUDUserService";
+import { useAuthActions } from "../Providers/AuthProvider";
 
 const SingupForm = () => {
+  const setAuth = useAuthActions();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const onSubmit = (values) => {
@@ -19,6 +21,7 @@ const SingupForm = () => {
     signupUser(user)
       .then(({ data }) => {
         console.log(data);
+        setAuth(data);
         setError(null);
         // setSavedFormValues(null);
         navigate("/");

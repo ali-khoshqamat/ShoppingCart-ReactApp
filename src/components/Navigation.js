@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../Providers/AuthProvider";
 import { useCart } from "../Providers/CartProvider";
 import DarkMode from "./DarkMode";
 
@@ -9,6 +10,7 @@ const items = [
 
 const Navigation = () => {
   const { total } = useCart();
+  const userData = useAuth();
 
   return (
     <nav className="flex items-center justify-between border-b bg-slate-100 px-8 font-bold shadow dark:border-slate-800 dark:bg-slate-900">
@@ -35,14 +37,14 @@ const Navigation = () => {
       </ul>
       <div className="flex items-center justify-between gap-x-4">
         <NavLink
-          to="/login"
+          to={userData ? "/profile" : "/login"}
           className={({ isActive }) =>
             isActive
               ? "border-b-2 !border-sky-500 py-4 px-0.5 text-sky-500"
               : "py-4 px-0.5 hover:text-sky-500/90"
           }
         >
-          <button>login/singup</button>
+          {userData ? "profile" : "login/singup"}
         </NavLink>
         <DarkMode />
       </div>
