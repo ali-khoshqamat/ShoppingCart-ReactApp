@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useAuth } from "../Providers/AuthProvider";
 import { useCart, useCartActions } from "../Providers/CartProvider";
 import { checkInCart } from "../utils/checkInCart";
 
 const Product = ({ product }) => {
+  const userData = useAuth();
   const { cart } = useCart();
   const dispatch = useCartActions();
 
@@ -41,7 +43,10 @@ const Product = ({ product }) => {
       </div>
 
       {checkInCart(cart, product) ? (
-        <Link to="/checkout" className="text-sky-500">
+        <Link
+          to={userData ? "/checkout" : "/signup?redirect=checkout"}
+          className="text-sky-500"
+        >
           <button
             onClick={() => addProductHandler(product)}
             className="rounded-md border border-slate-300 bg-slate-200 py-1 px-3 text-center font-bold shadow-sm hover:border-sky-500 hover:!text-sky-500 dark:border-slate-600 dark:bg-slate-700 dark:hover:border-sky-500"

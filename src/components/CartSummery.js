@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../Providers/AuthProvider";
 import { useCart } from "../Providers/CartProvider";
 
 const CartSummery = () => {
+  const userData = useAuth();
   const { cart, total } = useCart();
 
   const totalPrice = cart.reduce(
@@ -51,7 +53,7 @@ const CartSummery = () => {
           </div>
         </div>
       </div>
-      <Link to="/checkout">
+      <Link to={userData ? "/checkout" : "/signup?redirect=checkout"}>
         <button className="w-full rounded-md border border-slate-300 bg-slate-200 py-1.5 px-3 text-center font-bold text-sky-500 shadow-sm hover:border-sky-500 dark:border-slate-600 dark:bg-slate-700 dark:hover:border-sky-500">
           Continue Order
         </button>

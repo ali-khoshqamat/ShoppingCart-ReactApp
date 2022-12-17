@@ -10,8 +10,10 @@ import BooleanCheckBoxInput from "../common/BooleanCheckBoxInput";
 import { Link, useNavigate } from "react-router-dom";
 import { signupUser } from "../services/CRUDUserService";
 import { useAuthActions } from "../Providers/AuthProvider";
+import { useQuery } from "../Hooks/useQuery";
 
 const SingupForm = () => {
+  const redirect = useQuery().get("redirect") || "/";
   const setAuth = useAuthActions();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -24,7 +26,7 @@ const SingupForm = () => {
         setAuth(data);
         setError(null);
         // setSavedFormValues(null);
-        navigate("/");
+        navigate(`/${redirect}`);
       })
       .catch((error) => {
         console.log(error);
@@ -90,7 +92,7 @@ const SingupForm = () => {
           Signup
         </button>
         {error && <p className="text-red-600">{error}</p>}
-        <Link to="/login">
+        <Link to={`/login?redirect=${redirect}`}>
           <p className="text-sm hover:text-sky-500">Already login?</p>
         </Link>
       </form>

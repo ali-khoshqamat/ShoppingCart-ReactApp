@@ -6,8 +6,10 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../services/CRUDUserService";
 import { useAuthActions } from "../Providers/AuthProvider";
+import { useQuery } from "../Hooks/useQuery";
 
 const LoginForm = () => {
+  const redirect = useQuery().get("redirect") || "/";
   const setAuth = useAuthActions();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -17,7 +19,7 @@ const LoginForm = () => {
         console.log(data);
         setAuth(data);
         setError(null);
-        navigate("/");
+        navigate(`/${redirect}`);
       })
       .catch((error) => {
         console.log(error);
@@ -67,7 +69,7 @@ const LoginForm = () => {
           Login
         </button>
         {error && <p className="text-red-600">{error}</p>}
-        <Link to="/signup">
+        <Link to={`/signup?redirect=${redirect}`}>
           <p className="text-sm hover:text-sky-500">Not singup yet?</p>
         </Link>
       </form>
