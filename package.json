@@ -2,6 +2,7 @@
   "name": "shopping-cart",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://ali-khoshqamat.github.io/ShoppingCart-ReactApp",
   "dependencies": {
     "axios": "^1.2.1",
     "formik": "^2.2.9",
@@ -19,7 +20,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "dbjson": "json-server -p 3001 -w data/db.json"
+    "dbjson": "json-server -p 3001 -w data/db.json",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +45,7 @@
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "autoprefixer": "^10.4.13",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.4.19",
     "prettier": "^2.8.0",
     "prettier-plugin-tailwindcss": "^0.2.0",
