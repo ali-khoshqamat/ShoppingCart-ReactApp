@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { addToCart } from "../features/cart/cartSlice";
 import { useAuth } from "../Providers/AuthProvider";
-import { addToCart } from "../redux/cart/cartActoin";
 import { checkInCart } from "../utils/checkInCart";
 
 const Product = ({ product }) => {

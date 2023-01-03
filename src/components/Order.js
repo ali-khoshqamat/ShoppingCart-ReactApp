@@ -1,7 +1,7 @@
 import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/cart/cartActoin";
+import { addToCart, removeFromCart } from "../features/cart/cartSlice";
 
 const Order = ({ product }) => {
   const dispatch = useDispatch();

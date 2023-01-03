@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://ali-khoshqamat.github.io/ShoppingCart-ReactApp",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.1",
     "formik": "^2.2.9",
     "json-server": "^0.17.1",

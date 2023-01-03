@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AuthProvider from "./Providers/AuthProvider";
 import { Provider } from "react-redux";
-import store from "./redux/store";
+import { store } from "./features/store";
 
 function App() {
   return (
