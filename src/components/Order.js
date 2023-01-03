@@ -1,16 +1,17 @@
-import { useCartActions } from "../Providers/CartProvider";
 import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { addToCart, removeFromCart } from "../redux/cart/cartActoin";
 
 const Order = ({ product }) => {
-  const dispatch = useCartActions();
+  const dispatch = useDispatch();
 
   const incrementHandler = (product) => {
-    dispatch({ type: "ADD_TO_CART", payload: product });
+    dispatch(addToCart(product));
     toast.success(`${product.name} Added :)`);
   };
   const decrementHandler = (product) => {
-    dispatch({ type: "REMOVE_FROM_CART", payload: product });
+    dispatch(removeFromCart(product));
     product.quantity > 1
       ? toast.error(`${product.name} was Removed!`)
       : toast.error(`${product.name} was Deleted!`);

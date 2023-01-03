@@ -1,8 +1,8 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useCart } from "../Providers/CartProvider";
 
 const CheckoutDetails = () => {
-  const { cart, total } = useCart();
+  const { cart, total } = useSelector((state) => state.cart);
 
   const totalPrice = cart.reduce(
     (acc, curr) => acc + curr.price * curr.quantity,

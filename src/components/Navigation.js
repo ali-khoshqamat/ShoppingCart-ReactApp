@@ -1,6 +1,6 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../Providers/AuthProvider";
-import { useCart } from "../Providers/CartProvider";
 import DarkMode from "./DarkMode";
 
 const items = [
@@ -9,7 +9,7 @@ const items = [
 ];
 
 const Navigation = () => {
-  const { total } = useCart();
+  const { total } = useSelector((state) => state.cart);
   const userData = useAuth();
 
   return (

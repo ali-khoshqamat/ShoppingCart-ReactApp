@@ -1,10 +1,10 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAuth } from "../Providers/AuthProvider";
-import { useCart } from "../Providers/CartProvider";
 
 const CartSummery = () => {
   const userData = useAuth();
-  const { cart, total } = useCart();
+  const { cart, total } = useSelector((state) => state.cart);
 
   const totalPrice = cart.reduce(
     (acc, curr) => acc + curr.price * curr.quantity,

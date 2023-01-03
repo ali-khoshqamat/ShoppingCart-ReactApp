@@ -1,17 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../Providers/AuthProvider";
-import { useCart, useCartActions } from "../Providers/CartProvider";
+import { addToCart } from "../redux/cart/cartActoin";
 import { checkInCart } from "../utils/checkInCart";
 
 const Product = ({ product }) => {
   const userData = useAuth();
-  const { cart } = useCart();
-  const dispatch = useCartActions();
+  const { cart } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   const addProductHandler = (product) => {
     if (!checkInCart(cart, product)) {
-      dispatch({ type: "ADD_TO_CART", payload: product });
+      dispatch(addToCart(product));
       toast.success(`${product.name} Added to Cart :)`);
     }
   };

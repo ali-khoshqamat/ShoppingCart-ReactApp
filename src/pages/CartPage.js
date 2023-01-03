@@ -1,9 +1,9 @@
+import { useSelector } from "react-redux";
 import CartSummery from "../components/CartSummery";
 import Order from "../components/Order";
-import { useCart } from "../Providers/CartProvider";
 
 const CartPage = () => {
-  const { cart } = useCart();
+  const { cart } = useSelector((state) => state.cart);
 
   return !cart.length ? (
     <main className="text-center">
