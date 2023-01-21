@@ -28,8 +28,11 @@ const Navigation = () => {
               {item.name}
             </NavLink>
             {item.name === "Cart" && total > 0 && (
-              <div className="absolute top-3.5 -right-5 flex h-[18px] w-[18px] items-center justify-center rounded-full bg-sky-500 text-sm text-slate-200 dark:text-slate-900">
-                {total}
+              <div className="flex">
+                <div className="absolute top-3.5 -right-5 h-[18px] w-[18px] animate-ping rounded-full bg-sky-500"></div>
+                <div className="absolute top-3.5 -right-5 flex h-[18px] w-[18px] items-center justify-center rounded-full bg-sky-500 text-sm text-slate-200 dark:text-slate-900">
+                  {total}
+                </div>
               </div>
             )}
           </li>
